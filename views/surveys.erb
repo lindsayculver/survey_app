@@ -1,0 +1,8 @@
+<%= @survey.name %>
+<% if @questions.any?() %>
+<% @questions.each do |question| %>
+<ul>
+  <a href="/questions/<%= question.id() %>/edit"> <li><%= question.content() %></li></a>
+</ul>
+<% end %>
+<% end %>

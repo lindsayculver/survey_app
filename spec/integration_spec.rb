@@ -11,4 +11,9 @@ describe('adding a new survey', {:type => :feature}) do
     click_button('Add Survey')
     expect(page).to have_content("BOXERS OR BRIEFS")
   end
+  it('show you information about a selected survey') do
+    test_survey = Survey.create({:name => "Cats or Dogs", :id => nil})
+    visit("/surveys/#{test_survey.id()}")
+    expect(page).to have_content("CATS OR DOGS")
+  end
 end
