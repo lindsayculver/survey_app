@@ -15,4 +15,9 @@ describe(Survey) do
     test_survey = Survey.create({:name => "beard or no beard?"})
     expect(test_survey.name()).to(eq("BEARD OR NO BEARD?"))
   end
+
+  it("validates presence of a survey name") do
+    test_survey = Survey.new({:name => ""})
+    expect(test_survey.save()).to(eq(false))
+  end
 end
