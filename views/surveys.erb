@@ -11,7 +11,7 @@
 
 <% @questions.each do |question| %>
 <ul>
-  <a href="/questions/<%= question.id() %>/edit"> <li><%= question.content() %></li></a>
+  <a href="/questions/<%= question.id() %>"> <li><%= question.content() %></li></a>
 </ul>
 <% end %>
 <% else %>

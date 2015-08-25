@@ -49,3 +49,19 @@ delete("/surveys/:id") do
   @surveys = Survey.all()
   erb(:index)
 end
+
+get('/questions/:id') do
+  @questions = Question.all()
+  @question = Question.find(params.fetch("id").to_i())
+  erb(:question_edit)
+end
+
+patch('/questions/:id/edit') do
+  content = params.fetch("content")
+  @questions = Question.all()
+  @question = Question.find(params.fetch("id").to_i())
+  @question.update({:content => content})
+  @questions = Question.all()
+  @surveys = Survey.all()
+  erb(:question_edit)
+end
