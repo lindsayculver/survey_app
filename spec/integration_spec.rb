@@ -36,11 +36,19 @@ describe('path of survey', {:type => :feature}) do
     click_button('DELETE SURVEY')
     expect(page).to have_no_content("TOE NAIL CLIPPERS")
   end
-  # it('lets you update and edit a question') do
-  #   test_question = Question.create({:content => "piggy", :survey_id => nil})
-  #   visit("/questions/#{test_question.id()}/edit")
-  #   fill_in('content', :with => "chickie")
-  #   click_button('Edit')
-  #   expect(page).to have_content("chickie")
-  # end
+  it('lets you update and edit a question') do
+    test_survey = Survey.create({:name => "Cuddle Buddies", :id => nil})
+    test_question = Question.create({:content => "piggy", :survey_id => test_survey.id(), :id => nil})
+    visit("/questions/#{test_question.id()}/edit")
+    fill_in('content', :with => "chickie")
+    click_button('Edit')
+    expect(page).to have_content("chickie")
+  end
+  it('deletes a question') do
+    test_survey = Survey.create({:name => "Fried", :id => nil})
+    test_question = Question.create({:content => "Battered fish", :survey_id => test_survey.id(), :id => nil})
+    visit("/questions/#{test_question.id()}")
+    click_button('DELETE QUESTION')
+    expect(page).to have_no_content("Battered fish")
+  end
 end
