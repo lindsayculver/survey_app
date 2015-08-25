@@ -23,4 +23,11 @@ describe('path of survey', {:type => :feature}) do
     click_button('Add Question to Survey')
     expect(page).to have_content("Hulu")
   end
+  it('lets you update and edit') do
+    test_survey = Survey.create({:name => "Chicken Crackers", :id => nil})
+    visit("/surveys/#{test_survey.id()}")
+    fill_in('name', :with => "Crack")
+    click_button('Edit')
+    expect(page).to have_content("Crack")
+  end
 end

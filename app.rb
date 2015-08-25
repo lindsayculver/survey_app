@@ -32,3 +32,13 @@ post('/surveys/:id/questions') do
   @questions = Question.all()
   erb(:surveys)
 end
+
+patch('/surveys/:id/edit') do
+    name = params.fetch("name")
+    @survey = Survey.find(params.fetch("id").to_i())
+    @survey.update({:name => name})
+    @surveys = Survey.all()
+    @questions = @survey.questions()
+    @questions = Question.all()
+    erb(:surveys)
+end
