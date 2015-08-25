@@ -8,4 +8,8 @@ describe(Question) do
       expect(question.survey()).to(eq(survey))
     end
   end
+  it("validates presence of content") do
+    test_question = Question.new({:content => ""})
+    expect(test_question.save()).to(eq(false))
+  end
 end
