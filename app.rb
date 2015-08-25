@@ -42,3 +42,10 @@ patch('/surveys/:id/edit') do
     @questions = Question.all()
     erb(:surveys)
 end
+
+delete("/surveys/:id") do
+  @survey = Survey.find(params.fetch("id").to_i())
+  @survey.delete()
+  @surveys = Survey.all()
+  erb(:index)
+end

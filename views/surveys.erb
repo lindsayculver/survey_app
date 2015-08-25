@@ -20,7 +20,14 @@
 
 <h3>Create New Question:</h3>
 <form action="/surveys/<%= @survey.id() %>/questions" method="post">
-  <input id="name" name="content" type="text">
+  <input id="content" name="content" type="text">
 
   <button type="submit">Add Question to Survey</button>
+</form>
+
+
+<h6>Don't admire your handy work?</h6>
+<form action="/surveys/<%= @survey.id() %>" method="post">
+  <input name="_method" type="hidden" value="delete">
+  <button type="submit">DELETE SURVEY</button>
 </form>

@@ -28,6 +28,12 @@ describe('path of survey', {:type => :feature}) do
     visit("/surveys/#{test_survey.id()}")
     fill_in('name', :with => "Crack")
     click_button('Edit')
-    expect(page).to have_content("Crack")
+    expect(page).to have_content("CRACK")
+  end
+  it('deletes a survey') do
+    test_survey = Survey.create({:name => "Toe Nail Clippers", :id => nil})
+    visit("/surveys/#{test_survey.id()}")
+    click_button('DELETE SURVEY')
+    expect(page).to have_no_content("TOE NAIL CLIPPERS")
   end
 end
