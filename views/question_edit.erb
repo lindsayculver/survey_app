@@ -1,6 +1,6 @@
 <%= @question.content() %>
 
-<form action='/questions/<%= @question.id() %>/edit' method='post'>
+<form action='/questions/<%= @question.id() %>' method='post'>
   <input name="_method" type="hidden" value="patch">
   <label for="content">Edit this:</label>
   <input name="content" type="text">
@@ -8,7 +8,7 @@
 </form>
 
 <h6>Don't like your question?</h6>
-<form action="/questions/<%= @question.id() %>/delete" method="post">
+<form action="/questions/<%= @question.id() %>" method="post">
   <input name="_method" type="hidden" value="delete">
   <button type="submit">DELETE QUESTION</button>
 </form>

@@ -3,6 +3,8 @@ require("pg")
 require("sinatra/activerecord")
 require("question")
 require("survey")
+require("launchy")
+require("pry")
 
 RSpec.configure do |config|
   config.after(:each) do

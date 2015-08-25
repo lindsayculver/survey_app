@@ -56,7 +56,7 @@ get('/questions/:id') do
   erb(:question_edit)
 end
 
-patch('/questions/:id/edit') do
+patch('/questions/:id') do
   content = params.fetch("content")
   @questions = Question.all()
   @question = Question.find(params.fetch("id").to_i())
@@ -66,7 +66,7 @@ patch('/questions/:id/edit') do
   erb(:question_edit)
 end
 
-delete('/questions/:id/delete') do
+delete('/questions/:id') do
   @questions = Question.all()
   @question = Question.find(params.fetch("id").to_i())
   @survey = @question.survey()

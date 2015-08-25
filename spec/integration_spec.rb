@@ -39,7 +39,7 @@ describe('path of survey', {:type => :feature}) do
   it('lets you update and edit a question') do
     test_survey = Survey.create({:name => "Cuddle Buddies", :id => nil})
     test_question = Question.create({:content => "piggy", :survey_id => test_survey.id(), :id => nil})
-    visit("/questions/#{test_question.id()}/edit")
+    visit("/questions/#{test_question.id()}")
     fill_in('content', :with => "chickie")
     click_button('Edit')
     expect(page).to have_content("chickie")
