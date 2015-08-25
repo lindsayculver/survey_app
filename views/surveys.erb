@@ -1,8 +1,18 @@
 <%= @survey.name %>
-<% if @questions.any?() %>
+<% if @survey.questions.any?() %>
+
 <% @questions.each do |question| %>
 <ul>
   <a href="/questions/<%= question.id() %>/edit"> <li><%= question.content() %></li></a>
 </ul>
 <% end %>
+<% else %>
+<h3>Ask something below!</h3>
 <% end %>
+
+<h3>Create New Question:</h3>
+<form action="/surveys/<%= @survey.id() %>/questions" method="post">
+  <input id="name" name="content" type="text">
+
+  <button type="submit">Add Question to Survey</button>
+</form>
